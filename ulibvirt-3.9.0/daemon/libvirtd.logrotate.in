@@ -1,0 +1,9 @@
+@localstatedir@/log/libvirt/libvirtd.log {
+        daily
+        missingok
+        rotate 31
+        compress
+        delaycompress
+        copytruncate
+        minsize 100k
+}

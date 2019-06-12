@@ -1,0 +1,14 @@
+FROM centos:7
+MAINTAINER WANG Chao <chao.wang@ucloud.cn>
+
+RUN yum groupinstall -y 'Development Tools' && \
+    yum install -y audit-libs-devel augeas avahi-devel cyrus-sasl-devel \
+		   dbus-devel device-mapper-devel dnsmasq ebtables gnutls-devel \
+		   iptables iscsi-initiator-utils libacl-devel libattr-devel \
+		   libblkid-devel libcap-ng-devel libcurl-devel libnl3-devel \
+		   libpcap-devel libpciaccess-devel libselinux-devel \
+		   libtasn1-devel libxml2-devel libxslt lvm2 ncurses-devel \
+		   netcf-devel nfs-utils numactl-devel numad parted-devel \
+		   polkit polkit-devel radvd readline-devel scrub systemd-devel \
+		   systemtap-sdt-devel yajl-devel && \
+    yum clean all && rm -rf /var/cache/yum
