@@ -1,0 +1,20 @@
+Packaging Infrastruture Overview
+================================
+Run:
+  cd package/; make
+
+Frequently Asked Question
+=========================
+1. How do I build srpm?
+ Run `make srpm`
+
+2. How do I build binary package without srpm?
+ Run `make rpms`
+
+3. How do I build .el6 srpm/rpms/..?
+ Run `make DIST=.el6.ucloud $(target)`
+ (DIST default to be ".el7.ucloud")
+
+4. How do I release official build as I'm the maintainer?
+ Run `make release && make release-tag` and then push the changes
+ In build server, pull the latest commits and run `make all-rpms`

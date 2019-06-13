@@ -1,0 +1,16 @@
+FROM centos:6.9
+MAINTAINER WANG Chao <chao.wang@ucloud.cn>
+
+RUN yum install -y epel-release centos-release-scl && \
+    yum groupinstall -y 'Development Tools' && \
+    yum install -y check-devel cyrus-sasl-devel glib2-devel gperftools-devel \
+		   iasl libaio-devel libattr-devel libcap-devel libcap-ng-devel \
+		   libgcrypt-devel libjpeg-devel libpng-devel libudev-devel \
+		   libuuid-devel lzo-devel ncurses-devel nettle-devel \
+		   numactl-devel openssl-devel pciutils-devel pixman-devel \
+		   snappy-devel systemtap-sdt-devel texinfo zlib-devel \
+		   # gcc-4.9
+		   devtoolset-3-gcc && \
+    yum clean all && rm -rf /var/cache/yum
+ENTRYPOINT ["scl", "enable", "devtoolset-3", "--"]
+CMD ["/bin/bash"]

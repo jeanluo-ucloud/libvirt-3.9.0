@@ -1,0 +1,17 @@
+FROM centos:7
+MAINTAINER WANG Chao <chao.wang@ucloud.cn>
+
+RUN yum groupinstall -y 'Development Tools' && \
+    yum install -y zlib-devel glib2-devel which gnutls-devel cyrus-sasl-devel \
+		   libtool libaio-devel rsync python pciutils-devel \
+		   libiscsi-devel ncurses-devel libattr-devel \
+		   'libusbx-devel >= 1.0.19' \
+		   texinfo \
+		   'libseccomp-devel >= 2.3.0' \
+		   libcurl-devel libssh2-devel \
+		   systemtap systemtap-sdt-devel libjpeg-devel libpng-devel \
+		   libuuid-devel bluez-libs-devel brlapi-devel check-devel \
+		   libcap-devel pixman-devel perl-podlators rdma-core-devel \
+		   gperftools-devel libfdt-devel lzo-devel snappy-devel \
+		   numactl-devel libgcrypt-devel diffutils && \
+    yum clean all && rm -rf /var/cache/yum
