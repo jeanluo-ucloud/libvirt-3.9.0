@@ -985,6 +985,9 @@ udevGetIfaceDef(struct udev *udev, const char *name)
     virInterfaceDef *ifacedef;
     unsigned int mtu;
     const char *mtu_str;
+    unsigned int txqueuelen;
+    const char *txqueuelen_str;
+
     char *vlan_parent_dev = NULL;
     const char *devtype;
 
@@ -1022,6 +1025,15 @@ udevGetIfaceDef(struct udev *udev, const char *name)
         goto error;
     }
     ifacedef->mtu = mtu;
+
+    /* TXQUEUELEN */
+    txqueuelen_str = udev_device_get_sysattr_value(dev, "txqueuelen");
+    if (virStrToLong_ui(txqueuelen_str, NULL, 10, &txqueuelen) < 0) {
+        virReportError(VIR_ERR_INTERNAL_ERROR,
+                _("Could not parse txqueuelen value '%s'"), txqueuelen_str);
+        goto error;
+    }
+    ifacedef->txqueuelen = txqueuelen;
 
     /* Number of IP protocols this interface has assigned */
     /* XXX: Do we want a netlink query or a call out to ip or leave it? */

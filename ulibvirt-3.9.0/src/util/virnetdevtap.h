@@ -70,10 +70,12 @@ virNetDevTapAttachBridge(const char *tapname,
                          const unsigned char *vmuuid,
                          virNetDevVPortProfilePtr virtPortProfile,
                          virNetDevVlanPtr virtVlan,
-                         unsigned int txqueuelen,
-                         unsigned int *actualTXQ,
+                         
                          unsigned int mtu,
-                         unsigned int *actualMTU)
+                         unsigned int *actualMTU,
+                         
+                         unsigned int txqueuelen,
+                         unsigned int *actualTXQ)
     ATTRIBUTE_NONNULL(1) ATTRIBUTE_NONNULL(2) ATTRIBUTE_NONNULL(3)
     ATTRIBUTE_RETURN_CHECK;
 
@@ -87,10 +89,13 @@ int virNetDevTapCreateInBridgePort(const char *brname,
                                    virNetDevVPortProfilePtr virtPortProfile,
                                    virNetDevVlanPtr virtVlan,
                                    virNetDevCoalescePtr coalesce,
-                                   unsigned int txqueuelen,
-                                   unsigned int *actualTXQ,
+                                   
                                    unsigned int mtu,
                                    unsigned int *actualMTU,
+
+                                   unsigned int txqueuelen,
+                                   unsigned int *actualTXQ,
+
                                    unsigned int flags)
     ATTRIBUTE_NONNULL(1) ATTRIBUTE_NONNULL(2) ATTRIBUTE_NONNULL(3)
     ATTRIBUTE_RETURN_CHECK ATTRIBUTE_NOINLINE;

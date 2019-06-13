@@ -2335,7 +2335,7 @@ networkStartNetworkVirtual(virNetworkDriverStatePtr driver,
         if (virNetDevTapCreateInBridgePort(def->bridge,
                                            &macTapIfName, &def->mac,
                                            NULL, NULL, &tapfd, 1, NULL, NULL,
-                                           NULL, def->mtu, NULL,
+                                           NULL, def->mtu, NULL,def->txqueuelen, NULL,
                                            VIR_NETDEV_TAP_CREATE_USE_MAC_FOR_BRIDGE |
                                            VIR_NETDEV_TAP_CREATE_IFUP |
                                            VIR_NETDEV_TAP_CREATE_PERSIST) < 0) {
@@ -4825,7 +4825,7 @@ networkNotifyActualDevice(virDomainDefPtr dom,
                                          &iface->mac, dom->uuid,
                                          virDomainNetGetActualVirtPortProfile(iface),
                                          virDomainNetGetActualVlan(iface),
-                                         iface->mtu, NULL) < 0) {
+                                         iface->mtu, NULL, iface->txqueuelen, NULL) < 0) {
                 goto error;
             }
         }

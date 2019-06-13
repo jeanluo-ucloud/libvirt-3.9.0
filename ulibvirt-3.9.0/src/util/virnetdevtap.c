@@ -526,10 +526,12 @@ virNetDevTapAttachBridge(const char *tapname,
                          const unsigned char *vmuuid,
                          virNetDevVPortProfilePtr virtPortProfile,
                          virNetDevVlanPtr virtVlan,
-                         unsigned int txqueuelen,
-                         unsigned int *actualTXQ
+                         
                          unsigned int mtu,
-                         unsigned int *actualMTU)
+                         unsigned int *actualMTU,
+
+                         unsigned int txqueuelen,
+                         unsigned int *actualTXQ)
 {
     /* If an MTU is specified for the new device, set it before
      * attaching the device to the bridge, as it may affect the MTU of
@@ -675,14 +677,10 @@ int virNetDevTapCreateInBridgePort(const char *brname,
         goto error;
 
     if (virNetDevTapAttachBridge(*ifname, brname, macaddr, vmuuid,
-                                 virtPortProfile, virtVlan, mtu, actualMTU) < 0) {
+                                 virtPortProfile, virtVlan, mtu, actualMTU, txqueuelen, actualTXQ) < 0) {
         goto error;
     }
 
-    if (virNetDevTapAttachBridge(*ifname, brname, macaddr, vmuuid,
-                                 virtPortProfile, virtVlan, txqueuelen, actualTXQ) < 0) {
-        goto error;
-    }
 
     if (virNetDevSetOnline(*ifname, !!(flags & VIR_NETDEV_TAP_CREATE_IFUP)) < 0)
         goto error;

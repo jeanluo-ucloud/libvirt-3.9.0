@@ -394,6 +394,7 @@ typedef enum {
     /* 245 */
     QEMU_CAPS_QUERY_CPU_MODEL_EXPANSION, /* qmp query-cpu-model-expansion */
     QEMU_CAPS_VIRTIO_NET_HOST_MTU, /* virtio-net-*.host_mtu */
+    QEMU_CAPS_VIRTIO_NET_HOST_TXQ,
     QEMU_CAPS_SPICE_RENDERNODE, /* -spice rendernode */
     QEMU_CAPS_DEVICE_NVDIMM, /* -device nvdimm */
     QEMU_CAPS_DEVICE_PCIE_ROOT_PORT, /* -device pcie-root-port */

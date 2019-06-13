@@ -801,6 +801,7 @@ bool qemuDomainSupportsNetdev(virDomainDefPtr def,
                               virDomainNetDefPtr net);
 
 bool qemuDomainNetSupportsMTU(virDomainNetType type);
+bool qemuDomainNetSupportsTXQ(virDomainNetType type);
 
 int qemuDomainNetVLAN(virDomainNetDefPtr def);
 
